@@ -24,13 +24,40 @@ import sys
 #
 
 def interQuartile(values, freqs):
+    arr = [v for v, f in zip(values, freqs) for i in range(f)]    
+    arr = sorted(arr)
+    n = len(arr)
+    if n % 2 == 0:
+        median = (arr[n//2] + arr[n//2 - 1]) / 2
+        arr1 = arr[:n//2]
+        arr2 = arr[n//2:]
+        n = len(arr1)
+        if n % 2 == 0:
+            q1 = (arr1[n//2] + arr1[n//2 - 1]) / 2
+            q3 = (arr2[n//2] + arr2[n//2 - 1]) / 2
+        else:
+            q1 = arr1[n//2]
+            q3 = arr2[n//2]
+    else:
+        median = arr[n//2]
+        arr1 = arr[:n//2]
+        arr2 = arr[n//2+1:]
+        n = len(arr1)
+        q1 = arr1[n//2]
+        q3 = arr2[n//2]
+    interquartile = float(q3 - q1)
+    print(round(interquartile, 1))
+ 
     # Print your answer to 1 decimal place within this function
 
 if __name__ == '__main__':
-    n = int(input().strip())
+    #n = int(input().strip())
 
-    val = list(map(int, input().rstrip().split()))
+    #val = list(map(int, input().rstrip().split()))
 
-    freq = list(map(int, input().rstrip().split()))
+    #freq = list(map(int, input().rstrip().split()))
+    n = 10
+    val = [10, 40, 30, 50, 20]
+    freq = [1, 2, 3, 4, 5]
 
     interQuartile(val, freq)
