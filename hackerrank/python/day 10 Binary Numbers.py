@@ -10,7 +10,6 @@ import sys
 
 if __name__ == '__main__':
     n = int(input().strip())
-    n = 13
     b = format(n, "b")
     max_ones = 0
     ones = 0
